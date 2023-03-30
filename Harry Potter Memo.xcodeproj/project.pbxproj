@@ -1,0 +1,509 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B866D79129C1F85F0019C9F8 /* Harry_Potter_MemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866D79029C1F85F0019C9F8 /* Harry_Potter_MemoApp.swift */; };
+		B866D79529C1F8610019C9F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B866D79429C1F8610019C9F8 /* Assets.xcassets */; };
+		B866D79829C1F8610019C9F8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B866D79729C1F8610019C9F8 /* Preview Assets.xcassets */; };
+		B866D79F29C1FA4C0019C9F8 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866D79E29C1FA4C0019C9F8 /* WelcomeView.swift */; };
+		B866E80229CA077600E90E3F /* AmaticSC-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B866E7FF29CA077600E90E3F /* AmaticSC-Regular.ttf */; };
+		B866E80329CA077600E90E3F /* AmaticSC-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B866E80029CA077600E90E3F /* AmaticSC-Bold.ttf */; };
+		B866E80429CA077600E90E3F /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = B866E80129CA077600E90E3F /* OFL.txt */; };
+		B866E80A29CA556200E90E3F /* Collection+UnfoldSequences.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866E80929CA556200E90E3F /* Collection+UnfoldSequences.swift */; };
+		B866E80C29CB48ED00E90E3F /* PlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866E80B29CB48ED00E90E3F /* PlayView.swift */; };
+		B8899E1D29C2197A004A129D /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8899E1C29C2197A004A129D /* BoardView.swift */; };
+		B8899E1F29C30377004A129D /* SingleCardInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8899E1E29C30377004A129D /* SingleCardInfoView.swift */; };
+		B8899E2129C309D9004A129D /* SingleCardPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8899E2029C309D9004A129D /* SingleCardPhotoView.swift */; };
+		B8899E2429C31262004A129D /* CardBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8899E2329C31262004A129D /* CardBackView.swift */; };
+		B8899E2829C31FE8004A129D /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8899E2729C31FE8004A129D /* CardModel.swift */; };
+		B8899E2B29C321A5004A129D /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8899E2A29C321A5004A129D /* BoardViewModel.swift */; };
+		B8A27AF729D43DD20064BC9C /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A27AF629D43DD20064BC9C /* CardView.swift */; };
+		B8A27B6429D5955C0064BC9C /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A27B6329D5955C0064BC9C /* CardViewModel.swift */; };
+		B8D07D5C29C469D20076FC73 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = B8D07D5B29C469D20076FC73 /* SDWebImageSwiftUI */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B866D78D29C1F85F0019C9F8 /* Harry Potter Memo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Harry Potter Memo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B866D79029C1F85F0019C9F8 /* Harry_Potter_MemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Harry_Potter_MemoApp.swift; sourceTree = "<group>"; };
+		B866D79429C1F8610019C9F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B866D79729C1F8610019C9F8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B866D79E29C1FA4C0019C9F8 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		B866D7A029C1FBA50019C9F8 /* Harry-Potter-Memo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Harry-Potter-Memo-Info.plist"; sourceTree = SOURCE_ROOT; };
+		B866D7AE29C1FD5E0019C9F8 /* AmaticSC-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AmaticSC-Bold.ttf"; sourceTree = "<group>"; };
+		B866E7FF29CA077600E90E3F /* AmaticSC-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AmaticSC-Regular.ttf"; sourceTree = "<group>"; };
+		B866E80029CA077600E90E3F /* AmaticSC-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "AmaticSC-Bold.ttf"; path = "../../Amatic_SC/AmaticSC-Bold.ttf"; sourceTree = "<group>"; };
+		B866E80129CA077600E90E3F /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		B866E80929CA556200E90E3F /* Collection+UnfoldSequences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+UnfoldSequences.swift"; sourceTree = "<group>"; };
+		B866E80B29CB48ED00E90E3F /* PlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayView.swift; sourceTree = "<group>"; };
+		B8899E1C29C2197A004A129D /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		B8899E1E29C30377004A129D /* SingleCardInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleCardInfoView.swift; sourceTree = "<group>"; };
+		B8899E2029C309D9004A129D /* SingleCardPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleCardPhotoView.swift; sourceTree = "<group>"; };
+		B8899E2329C31262004A129D /* CardBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBackView.swift; sourceTree = "<group>"; };
+		B8899E2729C31FE8004A129D /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
+		B8899E2A29C321A5004A129D /* BoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewModel.swift; sourceTree = "<group>"; };
+		B8A27AF629D43DD20064BC9C /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		B8A27B6329D5955C0064BC9C /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B866D78A29C1F85F0019C9F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8D07D5C29C469D20076FC73 /* SDWebImageSwiftUI in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B866D78429C1F85F0019C9F8 = {
+			isa = PBXGroup;
+			children = (
+				B866D7A029C1FBA50019C9F8 /* Harry-Potter-Memo-Info.plist */,
+				B866D78F29C1F85F0019C9F8 /* Harry Potter Memo */,
+				B866D78E29C1F85F0019C9F8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B866D78E29C1F85F0019C9F8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B866D78D29C1F85F0019C9F8 /* Harry Potter Memo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B866D78F29C1F85F0019C9F8 /* Harry Potter Memo */ = {
+			isa = PBXGroup;
+			children = (
+				B866E80729CA554800E90E3F /* Helpers */,
+				B866D79029C1F85F0019C9F8 /* Harry_Potter_MemoApp.swift */,
+				B8899E2929C32183004A129D /* ViewModel */,
+				B8899E2629C31FD7004A129D /* Model */,
+				B8899E2229C30DC7004A129D /* View */,
+				B866D79429C1F8610019C9F8 /* Assets.xcassets */,
+				B866D7AB29C1FD510019C9F8 /* Fonts */,
+				B866D79629C1F8610019C9F8 /* Preview Content */,
+			);
+			path = "Harry Potter Memo";
+			sourceTree = "<group>";
+		};
+		B866D79629C1F8610019C9F8 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				B866D79729C1F8610019C9F8 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B866D7AB29C1FD510019C9F8 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B866E7FF29CA077600E90E3F /* AmaticSC-Regular.ttf */,
+				B866E80029CA077600E90E3F /* AmaticSC-Bold.ttf */,
+				B866E7FE29CA077600E90E3F /* Amatic_SC */,
+				B866D7AE29C1FD5E0019C9F8 /* AmaticSC-Bold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		B866E7FE29CA077600E90E3F /* Amatic_SC */ = {
+			isa = PBXGroup;
+			children = (
+				B866E80129CA077600E90E3F /* OFL.txt */,
+			);
+			path = Amatic_SC;
+			sourceTree = SOURCE_ROOT;
+		};
+		B866E80729CA554800E90E3F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B866E80829CA554E00E90E3F /* Extensions */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		B866E80829CA554E00E90E3F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B866E80929CA556200E90E3F /* Collection+UnfoldSequences.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B866E80D29CB689300E90E3F /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				B8A27AF529D43DA20064BC9C /* Reverse */,
+				B866E80F29CB689B00E90E3F /* Fronts */,
+				B8A27AF629D43DD20064BC9C /* CardView.swift */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		B866E80F29CB689B00E90E3F /* Fronts */ = {
+			isa = PBXGroup;
+			children = (
+				B8899E1E29C30377004A129D /* SingleCardInfoView.swift */,
+				B8899E2029C309D9004A129D /* SingleCardPhotoView.swift */,
+			);
+			path = Fronts;
+			sourceTree = "<group>";
+		};
+		B8899E2229C30DC7004A129D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B866E80D29CB689300E90E3F /* Card */,
+				B866D79E29C1FA4C0019C9F8 /* WelcomeView.swift */,
+				B866E80B29CB48ED00E90E3F /* PlayView.swift */,
+				B8899E1C29C2197A004A129D /* BoardView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B8899E2629C31FD7004A129D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B8899E2729C31FE8004A129D /* CardModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B8899E2929C32183004A129D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B8899E2A29C321A5004A129D /* BoardViewModel.swift */,
+				B8A27B6329D5955C0064BC9C /* CardViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B8A27AF529D43DA20064BC9C /* Reverse */ = {
+			isa = PBXGroup;
+			children = (
+				B8899E2329C31262004A129D /* CardBackView.swift */,
+			);
+			path = Reverse;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B866D78C29C1F85F0019C9F8 /* Harry Potter Memo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B866D79B29C1F8610019C9F8 /* Build configuration list for PBXNativeTarget "Harry Potter Memo" */;
+			buildPhases = (
+				B866D78929C1F85F0019C9F8 /* Sources */,
+				B866D78A29C1F85F0019C9F8 /* Frameworks */,
+				B866D78B29C1F85F0019C9F8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Harry Potter Memo";
+			packageProductDependencies = (
+				B8D07D5B29C469D20076FC73 /* SDWebImageSwiftUI */,
+			);
+			productName = "Harry Potter Memo";
+			productReference = B866D78D29C1F85F0019C9F8 /* Harry Potter Memo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B866D78529C1F85F0019C9F8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					B866D78C29C1F85F0019C9F8 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = B866D78829C1F85F0019C9F8 /* Build configuration list for PBXProject "Harry Potter Memo" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B866D78429C1F85F0019C9F8;
+			packageReferences = (
+				B8D07D5A29C469D20076FC73 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
+			productRefGroup = B866D78E29C1F85F0019C9F8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B866D78C29C1F85F0019C9F8 /* Harry Potter Memo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B866D78B29C1F85F0019C9F8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B866E80429CA077600E90E3F /* OFL.txt in Resources */,
+				B866E80329CA077600E90E3F /* AmaticSC-Bold.ttf in Resources */,
+				B866D79829C1F8610019C9F8 /* Preview Assets.xcassets in Resources */,
+				B866D79529C1F8610019C9F8 /* Assets.xcassets in Resources */,
+				B866E80229CA077600E90E3F /* AmaticSC-Regular.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B866D78929C1F85F0019C9F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B866E80A29CA556200E90E3F /* Collection+UnfoldSequences.swift in Sources */,
+				B8899E1D29C2197A004A129D /* BoardView.swift in Sources */,
+				B866D79F29C1FA4C0019C9F8 /* WelcomeView.swift in Sources */,
+				B8899E1F29C30377004A129D /* SingleCardInfoView.swift in Sources */,
+				B8899E2829C31FE8004A129D /* CardModel.swift in Sources */,
+				B8899E2B29C321A5004A129D /* BoardViewModel.swift in Sources */,
+				B8899E2129C309D9004A129D /* SingleCardPhotoView.swift in Sources */,
+				B866D79129C1F85F0019C9F8 /* Harry_Potter_MemoApp.swift in Sources */,
+				B8A27B6429D5955C0064BC9C /* CardViewModel.swift in Sources */,
+				B8899E2429C31262004A129D /* CardBackView.swift in Sources */,
+				B8A27AF729D43DD20064BC9C /* CardView.swift in Sources */,
+				B866E80C29CB48ED00E90E3F /* PlayView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		B866D79929C1F8610019C9F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B866D79A29C1F8610019C9F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B866D79C29C1F8610019C9F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Harry Potter Memo/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Harry-Potter-Memo-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.charchuta.Harry-Potter-Memo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B866D79D29C1F8610019C9F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Harry Potter Memo/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Harry-Potter-Memo-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.charchuta.Harry-Potter-Memo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B866D78829C1F85F0019C9F8 /* Build configuration list for PBXProject "Harry Potter Memo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B866D79929C1F8610019C9F8 /* Debug */,
+				B866D79A29C1F8610019C9F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B866D79B29C1F8610019C9F8 /* Build configuration list for PBXNativeTarget "Harry Potter Memo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B866D79C29C1F8610019C9F8 /* Debug */,
+				B866D79D29C1F8610019C9F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B8D07D5A29C469D20076FC73 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B8D07D5B29C469D20076FC73 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B8D07D5A29C469D20076FC73 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = B866D78529C1F85F0019C9F8 /* Project object */;
+}
