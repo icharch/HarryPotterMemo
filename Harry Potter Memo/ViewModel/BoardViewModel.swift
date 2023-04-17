@@ -6,64 +6,134 @@
 //
 
 import Foundation
-extension Card: Hashable {}
 
-enum Card {
-    case image(CardModel), description(CardModel)
+struct PlayerHighscore: Codable, Identifiable {
+    let id: UUID
+    let name: String
+    let time: Int
 }
 
 class BoardViewModel: ObservableObject {
-    
-    @Published private(set) var cards: [Card] = []
-    
+    @Published private(set) var cards: [CardViewModel] = []
+    @Published var score = 0
+    @Published var timer: Timer? = nil
+    @Published var playTimeInSeconds: Int = 0
+    private let highscoreManager: HighscoreManager = .init()
+
+    var highscores: [PlayerHighscore] {
+        highscoreManager.highscores
+    }
+
+    var formattedPlayTime: String? {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.hour, .minute, .second]
+        formatter.unitsStyle = .full
+        return formatter.string(from: TimeInterval(playTimeInSeconds))
+    }
+
+    var cardToMatch: CardViewModel?
+    private let service: CardsServicable
+
     init() {
+        service = CardsService()
         Task {
             await fetchData()
-        }
-    }
-    
-    func flip(card: Card) {
-        switch card {
-
-        case let .image(model):
-            print(model)
-        case let .description(model):
-            print(model)
         }
     }
 }
 
 extension BoardViewModel {
-    // MARK: Networking
-    // TODO: - Move it to service layer in the future.
-    func fetchData() async {
-        do {
-            guard let url = URL(string: "https://hp-api.onrender.com/api/characters")
-            else { fatalError("Missing URL") }
+    
+    // MARK: FUNCTIONS
 
-            let urlRequest = URLRequest(url: url)
-            let (data, response) = try await URLSession.shared.data(for: urlRequest)
+    func didFlip(card: CardViewModel) {
+        guard cards.filter({ $0.isFlipped && !$0.isMatched }).count < 2 else { return }
+        card.isFlipped = true
 
-            guard (response as? HTTPURLResponse)?.statusCode == 200 else { fatalError("Error while fetching data") }
-
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            let decodedData = try decoder.decode([CardModel].self, from: data)
-            let newDecodedData = decodedData[0 ... 24]
-
-            DispatchQueue.main.async {
-                var randomElements = [CardModel]()
-                while randomElements.count < 6 {
-                    if let randomElement = newDecodedData.randomElement(), !randomElements.contains(where: { $0.id == randomElement.id })
-                    {
-                        randomElements.append(randomElement)
+        if cardToMatch == nil {
+            cardToMatch = card
+        } else {
+            // second card is flipped
+            if cardToMatch?.name == card.name {
+                cardToMatch?.isMatched = true
+                card.isMatched = true
+                cardToMatch = nil
+                score += 1
+            } else {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+                    card.isFlipped = false
+                    if !(self?.cardToMatch?.isMatched ?? false) {
+                        self?.cardToMatch?.isFlipped = false
+                        self?.cardToMatch = nil
                     }
                 }
-                self.cards = randomElements.map { [Card.image($0), Card.description($0)] }.flatMap { $0 }.shuffled()
-                print(self.cards)
+            }
+        }
+        if isGameResolved() {
+            highscoreManager.addResult(time: playTimeInSeconds)
+        }
+    }
+
+    func startTimer() {
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] tempTimer in
+            self?.playTimeInSeconds += 1
+        }
+    }
+    
+    func stopTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
+
+    func isGameResolved() -> Bool {
+        return !cards.contains(where: { !$0.isMatched })
+    }
+
+    func restart() {
+        cards.forEach({ card in
+            card.isMatched = false
+            card.isFlipped = false
+        })
+        cards.shuffle()
+        score = 0
+        playTimeInSeconds = 0
+    }
+
+    func fetchData() async {
+        do {
+            let cards = try await service.fetchCards()
+            await MainActor.run {
+                self.cards = cards.map { card in [
+                    CardViewModel(from: card, cardType: .image, didFlipCard: didFlip(card:)),
+                    CardViewModel(from: card, cardType: .description, didFlipCard: didFlip(card:)),
+                ] }
+                .flatMap { $0 }
+                .shuffled()
             }
         } catch {
-            print("Error fetching data from the website: \(error)")
+            print("error")
         }
+    }
+}
+
+protocol CardsServicable {
+    func fetchCards() async throws -> [CardModel]
+}
+
+class CardsService: CardsServicable {
+    func fetchCards() async throws -> [CardModel] {
+        guard let url = URL(string: "https://hp-api.onrender.com/api/characters")
+        else { fatalError("Missing URL") }
+
+        let urlRequest = URLRequest(url: url)
+        let (data, response) = try await URLSession.shared.data(for: urlRequest)
+
+        guard (response as? HTTPURLResponse)?.statusCode == 200 else { fatalError("Error while fetching data") }
+
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        let decodedData = try decoder.decode([CardModel].self, from: data)
+        let newDecodedData = decodedData[0 ... 2]
+        return Array(newDecodedData)
     }
 }

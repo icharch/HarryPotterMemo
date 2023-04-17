@@ -8,33 +8,66 @@
 import SwiftUI
 
 struct CardView: View {
-    @StateObject var viewModel = CardViewModel()
-    @State var card: Card
+    @StateObject var viewModel: CardViewModel
 
-    var didReverse: (() -> Void)
+    @State var backDegree: Double = 0
+    @State var frontDegree: Double = -360
+    @State var durationAndDelay: CGFloat = 0.3
+
+// MARK: BODY
+    
     var body: some View {
         ZStack {
-            switch card {
-            case let .description(model):
-                SingleCardInfoView(viewModel: .init(card: model), degree: $viewModel.frontDegree)
-            case let .image(model):
-                SingleCardPhotoView(viewModel: .init(card: model), degree: $viewModel.frontDegree)
+            if viewModel.isFlipped {
+                switch viewModel.cardType {
+                case .description:
+                    SingleCardInfoView(
+                        viewModel: .init(
+                            name: viewModel.name,
+                            house: viewModel.house,
+                            patronus: viewModel.patronus,
+                            ancestry: viewModel.ancestry
+                        ),
+                        degree: $frontDegree
+                    )
+                case .image:
+                    SingleCardPhotoView(
+                        viewModel: .init(
+                            photoURL: viewModel.imageURL),
+                        degree: $frontDegree
+                    )
+                }
+            } else {
+                CardBackView(degree: $backDegree)
             }
-            CardBackView(degree: $viewModel.backDegree)
         }
         .onTapGesture {
-            viewModel.flipCard()
-            didReverse()
+            guard !viewModel.isMatched else { return }
+            viewModel.cardFlip()
         }
     }
 
+        
+        
+        
 
+    
+            
+
+//            if viewModel.isFlipped {
+//                withAnimation(.linear(duration: durationAndDelay)) {
+//                    backDegree = 90
+//                }
+//                withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)) {
+//                    frontDegree = 0
+//                }
+//            }
+//            else {
+//                withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)) {
+//                    frontDegree = -90
+//                }
+//                withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)) {
+//                    backDegree = 0
+//                }
+            
 }
-
-//struct CardView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CardView(card: .image(CardModel(id: "dd925874-e800-4eb4-9f0d-4d0fed15634b", name: "Arthur Weasley", house: "Gryffindor", ancestry: .pureBlood, patronus: "weasel", image: "https://ik.imagekit.io/hpapi/arthur.jpg")))
-//    }
-//}
-//
-//

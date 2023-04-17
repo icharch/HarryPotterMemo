@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct SingleCardInfoView: View {
-    // MARK: BODY
+
     @ObservedObject var viewModel: SingleCardInfoViewModel
-    @Binding var degree : Double
+    @Binding var degree: Double
+    
+// MARK: BODY
 
     var body: some View {
-    ZStack {
+        ZStack {
             cardInfo
         }
         .rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0))
@@ -23,11 +25,16 @@ struct SingleCardInfoView: View {
 struct SingleCardInfoView_Previews: PreviewProvider {
     static var previews: some View {
         SingleCardInfoView(
-            viewModel: SingleCardInfoViewModel(card: .init(id: "", name: "", house: "Gryffindor", ancestry: .halfBlood, patronus: "stag", image: "https://ik.imagekit.io/hpapi/harry.jpg")), degree: .constant(0))
+            viewModel: .init(
+                name: "Test",
+                house: "",
+                patronus: "",
+                ancestry: ""
+            ),
+            degree: .constant(0)
+        )
     }
 }
-
-// MARK: COMPONENTS
 
 class SingleCardInfoViewModel: ObservableObject {
     @Published var name: String = ""
@@ -35,16 +42,17 @@ class SingleCardInfoViewModel: ObservableObject {
     @Published var patronus: String = ""
     @Published var ancestry: String = ""
 
-    init(card: CardModel) {
-        name = card.name
-        house = card.house
-        patronus = card.patronus
-        ancestry = card.ancestry.description
+    init(name: String, house: String, patronus: String, ancestry: String) {
+        self.name = name
+        self.house = house
+        self.patronus = patronus
+        self.ancestry = ancestry
     }
 }
 
-private extension SingleCardInfoView {
+// MARK: COMPONENTS
 
+private extension SingleCardInfoView {
     var cardInfo: some View {
         VStack(spacing: 5) {
             HStack {

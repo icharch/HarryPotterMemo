@@ -9,10 +9,10 @@ import SDWebImageSwiftUI
 import SwiftUI
 
 class SingleCardViewModel: ObservableObject {
-    var card: CardModel
+    var photoURL: URL?
 
-    init(card: CardModel) {
-        self.card = card
+    init(photoURL: String) {
+        self.photoURL = URL(string: photoURL)
     }
 }
 
@@ -20,7 +20,8 @@ struct SingleCardPhotoView: View {
     @ObservedObject var viewModel: SingleCardViewModel
     @Binding var degree : Double
 
-    // MARK: BODY
+// MARK: BODY
+    
     var body: some View {
         ZStack {
             cardPhoto
@@ -31,7 +32,8 @@ struct SingleCardPhotoView: View {
 
 struct SingleCardPhotoView_Previews: PreviewProvider {
     static var previews: some View {
-        SingleCardPhotoView(viewModel: SingleCardViewModel(card: .init(id: "", name: "", house: "", ancestry: .halfBlood, patronus: "", image: "https://ik.imagekit.io/hpapi/harry.jpg")), degree: .constant(0))
+        SingleCardPhotoView(viewModel: SingleCardViewModel(photoURL: "https://url"),
+                            degree: .constant(0))
     }
 }
 
@@ -39,7 +41,7 @@ struct SingleCardPhotoView_Previews: PreviewProvider {
 
 private extension SingleCardPhotoView {
     var cardPhoto: some View {
-        WebImage(url: URL(string: viewModel.card.image))
+        WebImage(url: viewModel.photoURL)
             .onSuccess { _, _, _ in }
             .resizable()
             .scaledToFill()

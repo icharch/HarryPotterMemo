@@ -14,16 +14,18 @@ struct WelcomeView: View {
     @State var playerName: String = ""
     @FocusState var playerInFocus: Bool
     @State var animate: Bool = false
-    @State var showAlert: Bool = false
-    @State var alertType: MyAlerts? = nil
+    @State var alertType: PlayerNameError?
     @AppStorage("name") var currentPlayerName: String = ""
     @AppStorage("name_typed") var currentPlayerNameTyped: Bool = false
+    
 
 // MARK: ALERT TYPES
     
-    enum MyAlerts {
-  //      case success
-        case error
+    enum PlayerNameError: Identifiable {
+        var id: Int {
+                hashValue
+            }
+        case tooShort
     }
     
 // MARK: BODY
@@ -40,7 +42,12 @@ struct WelcomeView: View {
             .padding(20)
             .onAppear(perform: addAnimation)
         }
-        .alert(isPresented: $showAlert, content: getAlert)
+        .alert(item: $alertType) { alertType in
+            switch alertType {
+            case .tooShort:
+                return Alert(title: Text("Your name is too short.. Please type again!"))
+            }
+        }
     }
 }
 
@@ -89,11 +96,12 @@ private extension WelcomeView {
     var saveButton: some View {
         Button(
             action: {
-                if playerName.count < 2 {
-                    alertType = .error
+                if playerName.count <= 3 {
+                    alertType = .tooShort
                 }
-                showAlert.toggle()
-                playerNameTyped()
+                else {
+                    playerNameTyped()
+                }
             },
             label: {
             Text("Save")
@@ -105,11 +113,8 @@ private extension WelcomeView {
                 .cornerRadius(15)
         })
     }
-}
-
+    
 // MARK: FUNCTIONS
-
-extension WelcomeView {
     
     func addAnimation() {
         DispatchQueue.main.asyncAfter(deadline: .now()) {
@@ -123,17 +128,9 @@ extension WelcomeView {
         }
     }
     
-    func getAlert() -> Alert {
-        switch alertType {
-        case .error:
-            return Alert(title: Text("Your name is too short.. Please type again!"))
-        case .none:
-            return Alert(title: Text("Error"))
-        }
-    }
-    
     func playerNameTyped() {
         currentPlayerName = playerName
         currentPlayerNameTyped = true
     }
 }
+

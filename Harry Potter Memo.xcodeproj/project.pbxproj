@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B854780429EDBDDA000E7BBA /* HighScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B854780329EDBDDA000E7BBA /* HighScoreManager.swift */; };
 		B866D79129C1F85F0019C9F8 /* Harry_Potter_MemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866D79029C1F85F0019C9F8 /* Harry_Potter_MemoApp.swift */; };
 		B866D79529C1F8610019C9F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B866D79429C1F8610019C9F8 /* Assets.xcassets */; };
 		B866D79829C1F8610019C9F8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B866D79729C1F8610019C9F8 /* Preview Assets.xcassets */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B854780329EDBDDA000E7BBA /* HighScoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreManager.swift; sourceTree = "<group>"; };
 		B866D78D29C1F85F0019C9F8 /* Harry Potter Memo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Harry Potter Memo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B866D79029C1F85F0019C9F8 /* Harry_Potter_MemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Harry_Potter_MemoApp.swift; sourceTree = "<group>"; };
 		B866D79429C1F8610019C9F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				B8899E2A29C321A5004A129D /* BoardViewModel.swift */,
+				B854780329EDBDDA000E7BBA /* HighScoreManager.swift */,
 				B8A27B6329D5955C0064BC9C /* CardViewModel.swift */,
 			);
 			path = ViewModel;
@@ -278,6 +281,7 @@
 				B8899E2829C31FE8004A129D /* CardModel.swift in Sources */,
 				B8899E2B29C321A5004A129D /* BoardViewModel.swift in Sources */,
 				B8899E2129C309D9004A129D /* SingleCardPhotoView.swift in Sources */,
+				B854780429EDBDDA000E7BBA /* HighScoreManager.swift in Sources */,
 				B866D79129C1F85F0019C9F8 /* Harry_Potter_MemoApp.swift in Sources */,
 				B8A27B6429D5955C0064BC9C /* CardViewModel.swift in Sources */,
 				B8899E2429C31262004A129D /* CardBackView.swift in Sources */,

@@ -12,6 +12,8 @@ struct PlayView: View {
     @State var animate: Bool = false
     @AppStorage("name") var currentPlayerName: String = ""
     
+// MARK: BODY
+
     var body: some View {
         
         ScrollView {
@@ -81,12 +83,9 @@ private extension PlayView {
         }
         .font(.custom("AmaticSC-Bold", size: 45))
     }
-}
-
+    
 // MARK: FUNCTIONS
 
-extension PlayView {
-    
     func addAnimation() {
         DispatchQueue.main.asyncAfter(deadline: .now()) {
             withAnimation(

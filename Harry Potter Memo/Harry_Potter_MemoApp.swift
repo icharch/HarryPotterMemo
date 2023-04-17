@@ -10,8 +10,7 @@ import SwiftUI
 @main
 struct Harry_Potter_MemoApp: App {
     
-  //  @AppStorage("name") var currentPlayerName: String = ""
-    @StateObject var boardViewModel = BoardViewModel()
+//    @StateObject var boardViewModel = BoardViewModel()
     @AppStorage("name_typed") var currentPlayerNameTyped: Bool = false
     
     var body: some Scene {
@@ -24,7 +23,7 @@ struct Harry_Potter_MemoApp: App {
                 }
             }
             .navigationViewStyle(StackNavigationViewStyle())
-            .environmentObject(boardViewModel)
+//            .environmentObject(boardViewModel)
         }
     }
 }
