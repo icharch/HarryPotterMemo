@@ -11,7 +11,7 @@ struct PlayView: View {
     
     @State var animate: Bool = false
     @AppStorage("name") var currentPlayerName: String = ""
-    
+    @State var hardness: Hardness = .easy
 // MARK: BODY
 
     var body: some View {
@@ -22,6 +22,11 @@ struct PlayView: View {
                 welcomeText
                 mainTitle
                 Spacer()
+                HStack {
+                    easyButton
+                    mediumButton
+                    hardButton
+                }
                 playButton
             }
             .padding(20)
@@ -41,6 +46,7 @@ private extension PlayView {
     var welcomeImage: some View {
         Image("welcomeview-harry")
             .resizable()
+            .frame(width: 250, height: 250)
             .clipShape(Circle())
             .scaledToFill()
             .padding()
@@ -50,9 +56,8 @@ private extension PlayView {
     
     var welcomeText: some View {
         HStack {
-            Text("Hey ")
+            Text("Hello ")
             Text(currentPlayerName)
-            Text("!")
         }
         .font(.custom("AmaticSC-Bold", size: animate ? 50 : 45))
         .padding(.horizontal, animate ? 10 : 50)
@@ -62,7 +67,7 @@ private extension PlayView {
     
     var playButton: some View {
         NavigationLink(
-            destination: BoardView(),
+            destination: BoardView(hardness: self.hardness),
             label: {
                 Text("Play")
                     .font(.custom("AmaticSC-Bold", size: 30))
@@ -76,12 +81,52 @@ private extension PlayView {
     
     var mainTitle: some View {
         HStack {
-            Text("Have fun and")
+            Text("Select hardness and play!")
                 .foregroundColor(.gray)
-            Text("Memo")
-                .foregroundColor(.red)
         }
         .font(.custom("AmaticSC-Bold", size: 45))
+    }
+    
+    var easyButton: some View {
+        Button {
+            hardness = .easy
+        } label: {
+            Text("Easy")
+                .font(.custom("AmaticSC-Bold", size: 30))
+                .frame(maxWidth: .infinity)
+                .foregroundColor(.white)
+                .padding()
+                .background(hardness == .easy ? Color.yellow : Color.gray)
+                .cornerRadius(15)
+        }
+    }
+    
+    var mediumButton: some View {
+        Button {
+            hardness = .medium
+        } label: {
+            Text("Medium")
+                .font(.custom("AmaticSC-Bold", size: 30))
+                .frame(maxWidth: .infinity)
+                .foregroundColor(.white)
+                .padding()
+                .background(hardness == .medium ? Color.yellow : Color.gray)
+                .cornerRadius(15)
+        }
+    }
+    
+    var hardButton: some View {
+        Button {
+            hardness = .hard
+        } label: {
+            Text("Hard")
+                .font(.custom("AmaticSC-Bold", size: 30))
+                .frame(maxWidth: .infinity)
+                .foregroundColor(.white)
+                .padding()
+                .background(hardness == .hard ? Color.yellow : Color.gray)
+                .cornerRadius(15)
+        }
     }
     
 // MARK: FUNCTIONS

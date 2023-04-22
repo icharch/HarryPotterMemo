@@ -15,11 +15,11 @@ struct PlayerHighscore: Codable, Identifiable {
 
 class BoardViewModel: ObservableObject {
     @Published private(set) var cards: [CardViewModel] = []
-    @Published var score = 0
+//    @Published var score = 0
     @Published var timer: Timer? = nil
     @Published var playTimeInSeconds: Int = 0
     private let highscoreManager: HighscoreManager = .init()
-
+    @Published var hardness: Hardness
     var highscores: [PlayerHighscore] {
         highscoreManager.highscores
     }
@@ -34,8 +34,9 @@ class BoardViewModel: ObservableObject {
     var cardToMatch: CardViewModel?
     private let service: CardsServicable
 
-    init() {
+    init(hardness: Hardness) {
         service = CardsService()
+        self.hardness = hardness
         Task {
             await fetchData()
         }
@@ -58,7 +59,7 @@ extension BoardViewModel {
                 cardToMatch?.isMatched = true
                 card.isMatched = true
                 cardToMatch = nil
-                score += 1
+//                score += 1
             } else {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
                     card.isFlipped = false
@@ -73,12 +74,6 @@ extension BoardViewModel {
             highscoreManager.addResult(time: playTimeInSeconds)
         }
     }
-
-    func startTimer() {
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] tempTimer in
-            self?.playTimeInSeconds += 1
-        }
-    }
     
     func stopTimer() {
         timer?.invalidate()
@@ -88,6 +83,12 @@ extension BoardViewModel {
     func isGameResolved() -> Bool {
         return !cards.contains(where: { !$0.isMatched })
     }
+    
+    func startTimer() {
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] tempTimer in
+            self?.playTimeInSeconds += 1
+        }
+    }
 
     func restart() {
         cards.forEach({ card in
@@ -95,13 +96,14 @@ extension BoardViewModel {
             card.isFlipped = false
         })
         cards.shuffle()
-        score = 0
+//        score = 0
         playTimeInSeconds = 0
+        timer?.invalidate()
     }
 
     func fetchData() async {
         do {
-            let cards = try await service.fetchCards()
+            let cards = try await service.fetchCards(self.hardness.rawValue)
             await MainActor.run {
                 self.cards = cards.map { card in [
                     CardViewModel(from: card, cardType: .image, didFlipCard: didFlip(card:)),
@@ -117,11 +119,17 @@ extension BoardViewModel {
 }
 
 protocol CardsServicable {
-    func fetchCards() async throws -> [CardModel]
+    func fetchCards(_ numberOfCards: Int) async throws -> [CardModel]
+}
+
+enum Hardness: Int {
+    case easy = 2
+    case medium = 6
+    case hard = 10
 }
 
 class CardsService: CardsServicable {
-    func fetchCards() async throws -> [CardModel] {
+    func fetchCards(_ numberOfCards: Int) async throws -> [CardModel] {
         guard let url = URL(string: "https://hp-api.onrender.com/api/characters")
         else { fatalError("Missing URL") }
 
@@ -133,7 +141,8 @@ class CardsService: CardsServicable {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         let decodedData = try decoder.decode([CardModel].self, from: data)
-        let newDecodedData = decodedData[0 ... 2]
+
+        let newDecodedData = decodedData[0 ... numberOfCards]
         return Array(newDecodedData)
     }
 }

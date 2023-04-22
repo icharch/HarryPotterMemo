@@ -9,11 +9,10 @@ import SwiftUI
 
 struct BoardView: View {
     
-    @ObservedObject var viewModel: BoardViewModel = BoardViewModel()
+    @ObservedObject var viewModel: BoardViewModel
     @State var timeAchieved: String = ""
     @State var highScoresDashboard: [String: String] = [:]
     @State var playerName: String = ""
-
     
     // MARK: APPSTORAGE
 
@@ -21,8 +20,6 @@ struct BoardView: View {
     @AppStorage("name_typed") var currentPlayerNameTyped: Bool = false
     @AppStorage("time_score") var timeScoreAchieved: String = ""
     @AppStorage("time_score_saved") var isTimeScoreSaved: Bool = false
-    
-
         
     let columns = [
         GridItem(.adaptive(minimum: 150))
@@ -30,15 +27,17 @@ struct BoardView: View {
 
     // MARK: BODY
 
+    init(hardness: Hardness) {
+        self.viewModel = BoardViewModel(hardness: hardness)
+    }
     var body: some View {
         ScrollView {
             VStack {
-                harryImage
                 VStack {
                     HStack {
-                        playerScore
-                        Spacer()
                         gameTimer
+                        Spacer()
+                        harryImage
                         Spacer()
                         restartButton
                     }
@@ -80,8 +79,7 @@ struct BoardView: View {
 
 struct StartView_Previews: PreviewProvider {
     static var previews: some View {
-        BoardView()
-            .environmentObject(BoardViewModel())
+        BoardView(hardness: .easy)
     }
 }
 
@@ -135,6 +133,7 @@ private extension BoardView {
     var restartButton: some View {
         Button(
             action: {
+                
                 viewModel.restart()
                 startTimer()
             },
@@ -151,24 +150,32 @@ private extension BoardView {
     }
     
     var gameTimer: some View {
-        Text("\(viewModel.playTimeInSeconds)")
-            .font(.custom("AmaticSC-Bold", size: 30))
-            .padding()
+        HStack {
+            Text("Time: ")
+            Text("\(viewModel.playTimeInSeconds)")
+        }
+        .font(.custom("AmaticSC-Bold", size: 30))
+        .frame(height: 20)
+        .padding()
+        .foregroundColor(.white)
+        .background(.gray.opacity(0.8))
+        .cornerRadius(15)
+        .shadow(color: .gray, radius: 2, x: 0, y: 2)
     }
     
-    var playerScore: some View {
-        HStack {
-            Text("Score: ")
-            Text("\(viewModel.score)")
-        }
-            .font(.custom("AmaticSC-Bold", size: 30))
-            .frame(height: 20)
-            .padding()
-            .foregroundColor(.white)
-            .background(.gray.opacity(0.8))
-            .cornerRadius(15)
-            .shadow(color: .gray, radius: 2, x: 0, y: 2)
-    }
+//    var playerScore: some View {
+//        HStack {
+//            Text("Score: ")
+//            Text("\(viewModel.score)")
+//        }
+//            .font(.custom("AmaticSC-Bold", size: 30))
+//            .frame(height: 20)
+//            .padding()
+//            .foregroundColor(.white)
+//            .background(.gray.opacity(0.8))
+//            .cornerRadius(15)
+//            .shadow(color: .gray, radius: 2, x: 0, y: 2)
+//    }
 
     var harryImage: some View {
         NavigationLink(
